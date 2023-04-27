@@ -9,15 +9,15 @@ module UnscopedAssociations
 
   module ClassMethods
     def belongs_to(name, scope = nil, options = {})
-      build_unscoped(Proc.new {|*args| super(*args) }, name, scope, options)
+      build_unscoped(Proc.new {|args| super(args) }, name, scope, options)
     end
 
     def has_many(name, scope = nil, options = {}, &extension)
-      build_unscoped(Proc.new {|*args| super(*args) }, name, scope, options, &extension)
+      build_unscoped(Proc.new {|args| super(args) }, name, scope, options, &extension)
     end
 
     def has_one(name, scope = nil, options = {})
-      build_unscoped(Proc.new {|*args| super(*args) }, name, scope, options)
+      build_unscoped(Proc.new {|args| super(args) }, name, scope, options)
     end
 
     private
